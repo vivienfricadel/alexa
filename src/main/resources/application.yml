@@ -1,3 +1,4 @@
-greeting:
-  message: "hello"
-  name: "quarkus"
+skill:
+  id: "amzn1.ask.skill.5742c2f6-17e4-4b9b-9fce-d03592614400"
+
+freebox-api/mp-rest/url: http://localhost:8000/

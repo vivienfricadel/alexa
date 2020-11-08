@@ -1,4 +1,4 @@
-package org.acme.resteasy.handlers;
+package org.amazon.handler.required;
 
 
 import static com.amazon.ask.request.Predicates.intentName;

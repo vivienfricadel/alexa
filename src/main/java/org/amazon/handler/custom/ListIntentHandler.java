@@ -11,32 +11,29 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package org.acme.resteasy.handlers;
+package org.amazon.handler.custom;
 
-import static com.amazon.ask.request.Predicates.requestType;
+import static com.amazon.ask.request.Predicates.intentName;
 
 import java.util.Optional;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
-import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
 
-public class LaunchRequestHandler implements RequestHandler {
+public class ListIntentHandler implements RequestHandler {
 
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(requestType(LaunchRequest.class));
+        return input.matches(intentName("List"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Welcome to the Alexa Skills Kit, you can say hello";
-        return input.getResponseBuilder()
-                .withSpeech(speechText)
-                .withSimpleCard("HelloWorld", speechText)
-                .withReprompt(speechText)
-                .build();
+        return input.getResponseBuilder() //
+                .withSpeech("Commandes disponibles") //
+                .withSimpleCard("Commandes disponibles", "Aucune") //
+                .withReprompt("Prochaine instruction").build();
     }
 
 }

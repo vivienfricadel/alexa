@@ -11,30 +11,32 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package org.acme.resteasy.handlers;
+package org.amazon.handler.required;
 
-import static com.amazon.ask.request.Predicates.intentName;
+import static com.amazon.ask.request.Predicates.requestType;
 
 import java.util.Optional;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
+import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
 
-public class HelpIntentHandler implements RequestHandler {
+public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("AMAZON.HelpIntent"));
+        return input.matches(requestType(LaunchRequest.class));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "You can say hello to me!";
+        String speechText = "Coucou";
         return input.getResponseBuilder()
-                .withSpeech(speechText)
-                .withSimpleCard("HelloWorld", speechText)
+                .withSpeech("Bienvenu")
+                .withSimpleCard("Vivien Fricadel", "Accueil")
                 .withReprompt(speechText)
                 .build();
     }
+
 }
